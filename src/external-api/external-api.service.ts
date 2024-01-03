@@ -2,11 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { Observable } from 'rxjs';
-import { StatusResponse } from '../types';
-
-enum RequestEntities {
-  EMPLOYEES = 'employees',
-}
+import { RequestEntities, StatusResponse } from '../types';
 
 @Injectable()
 export class ExternalApiService {
