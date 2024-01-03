@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { ExternalApiService } from '../external-api/external-api.service';
 import { RequestEntities } from '../types';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class RequestEmployeeTask {
@@ -15,7 +15,7 @@ export class RequestEmployeeTask {
     this.logger.debug('Requesting employee data...');
 
     try {
-      await firstValueFrom(
+      await lastValueFrom(
         await this.externalApiService.request(RequestEntities.EMPLOYEES),
       );
 

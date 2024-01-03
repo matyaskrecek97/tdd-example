@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { RequestEntities, StatusResponse } from '../types';
 
 @Injectable()
@@ -11,8 +11,10 @@ export class ExternalApiService {
   async request(
     entity: RequestEntities,
   ): Promise<Observable<AxiosResponse<StatusResponse>>> {
-    return this.httpService.post('EXTERNAL_API_URL', {
-      entity,
-    });
+    return this.httpService
+      .post('EXTERNAL_API_URL', {
+        entity,
+      })
+      .pipe(map((response) => response.data));
   }
 }
