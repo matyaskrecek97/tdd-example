@@ -15,8 +15,9 @@ export class AppController {
     return this.appService.status();
   }
 
-  @Post('/employe')
+  @Post('/employee')
   async employee(@Body() data: Employee[]) {
+    console.log(data);
     return this.employeeService.handleEmployeeData(data);
   }
 }

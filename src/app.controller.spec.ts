@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeeService } from './employee/employee.service';
+import { StatusResponse } from './types';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -19,8 +20,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
+    const mockValue: StatusResponse = { status: 'ok' };
+
     it('should return status', () => {
-      expect(appController.status()).toEqual({ status: 'ok' });
+      expect(appController.status()).toEqual(mockValue);
     });
   });
 });
